@@ -42,3 +42,11 @@ def getCurrentWeather(localCode, localName):
         weatherInformation['temperature'] = round(currentConditionsResponse[0]['Temperature']['Metric']['Value'])
         weatherInformation['localName'] = localName
         return weatherInformation
+    
+coordinates = getCoordinates()
+local = getLocalCode(coordinates['lat'], coordinates['long'])
+currentWeather = getCurrentWeather(local['localCode'], local['localName'])
+
+print('Current weather in: ' + currentWeather['localName'])
+print(currentWeather['textClimate'])
+print('Temperatura: ' + str(currentWeather['temperature']) + '\xb0' + ' C')
